@@ -27,15 +27,15 @@
         {{-- nav bar --}}
         <div class="nav-bar">
             {{-- nav brand --}}
-            <div class="nav-brand bg-danger py-2 pr-3 mb-2">
+            <div class="nav-brand bg-primary py-2 pr-3 mb-2">
                  <span class="text-white brand"><i class="fa fa-bars fa-2x"></i></span>
             </div>
-            <nav class="navigation bg-danger py-auto">
+            <nav class="navigation bg-primary py-auto">
                 {{-- nav menu --}}
                 <div class="menu">
                     <ul class="nav list-unstyled">
-                        <li class="nav-item"><a href="#">الرئيسية</a></li>
-                        <li class="nav-item"><a href="#">أخبار</a></li>
+                        <li class="nav-item"><a href="{{url('/')}}">الرئيسية</a></li>
+                        <li class="nav-item"><a href="{{url('/category/1')}}">أخبار</a></li>
                         <li class="nav-item"><a href="#">سياسة</a></li>
                         <li class="nav-item"><a href="#">اقتصاد</a></li>
                         <li class="nav-item"><a href="#">مجتمع</a></li>

@@ -6,6 +6,39 @@ a:hover {
     text-decoration: none;
 }
 
+.img-responsive {
+    width: 100%;
+    height: auto;
+}
+
+.pagination .page-item {
+    margin-right: 5px;
+}
+.pagination .page-item a {
+    transition: ease 0.3s;
+    font-size: 16px;
+}
+
+.pagination .page-item a:hover {
+    background: #2196f3 !important;
+    color: #fff !important;
+}
+
+.badge {
+    cursor: pointer;
+    font-size:12px
+}
+
+.text-underline{
+    text-decoration: underline;
+}
+
+.owl-dots{
+    margin-top: 30px !important;
+}
+.owl-dots .active span{
+    background:#2196f3 !important
+}
 /* head ------------------- */
 header .head .top-space ul li {
     color: #ffff;
@@ -73,7 +106,7 @@ header .navigation ul li a:hover {
 }
 
 .card {
-    border: 1px solid #e51c23;
+    border: 1px solid #2196f3;
     border-left-width: 4px;
 }
 .card-header {
@@ -87,7 +120,7 @@ header .navigation ul li a:hover {
 
 .card-header h3 span {
     display: inline-block;
-    background: #e51c23 !important;
+    background: #2196f3 !important;
     padding: 8px 20px 10px 15px;
     text-align: center;
     transition: ease;
@@ -115,7 +148,7 @@ header .navigation ul li a:hover {
         background: #fff !important;
     }
     .navigation .menu .nav .nav-item {
-        background: #e51c23;
+        background: #2196f3;
         display: block;
         width: 100%;
         margin-bottom: 8px;
@@ -131,12 +164,68 @@ header .navigation ul li a:hover {
         display: block;
     }
 }
-@media (min-width:768px){
-    .navigation{
+@media (min-width: 768px) {
+    .navigation {
         display: block !important;
     }
 }
 
+/* aside bar --------------- */
+
+/* latest posts */
+aside ul.list-group {
+    height: 600px;
+    overflow: hidden;
+    overflow-y: visible;
+    direction: ltr;
+    text-align: right;
+}
+
+aside ul.list-group li.list-group-item {
+    margin: 5px;
+    border: 1px solid #eee !important;
+}
+
+aside .post-categories label {
+    transition: ease;
+}
+aside .post-categories label:hover {
+    opacity: 0.8;
+    background: #000;
+}
+
+aside .latest-posts .post-title:hover p {
+    transition: color ease 0.5s;
+}
+aside .latest-posts .post-title:hover p {
+    color: #ff0000;
+}
+
+/* Advertising apace */
+
+.advertising-space {
+    height: 300px;
+}
+
+.advertising-space .ads {
+    border: 1px solid #2196f3;
+    height: 100%;
+    padding: 10px 15px;
+    border-radius: 2px;
+}
+
+/* categories -------------- */
+
+.categories .category-posts .post-image {
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
+}
+
+.categories .category-posts .post-content {
+    box-shadow: 0 0 8px 0px rgba(0, 0, 0, 0.5);
+    padding: 5px 10px 15px 5px;
+    border-radius: 0 0 5px 5px;
+}
 /* footer ------------------ */
 footer .logo {
     width: 120px;

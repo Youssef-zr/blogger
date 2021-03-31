@@ -1,5 +1,5 @@
         <footer class="container">
-            <section class="footer bg-danger py-4 mt-4 mb-1 px-2 text-center">
+            <section class="footer bg-primary pt-5 pb-3 px-2 mt-5 mb-1 text-center">
                 <div class="logo mx-auto">
                     <img src="{{url('/assets/img/logo-lg.png')}}" alt="logo" >
                 </div>
