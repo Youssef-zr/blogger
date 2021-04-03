@@ -1,15 +1,14 @@
 $(() => {
 
     // toggle navigation bar
-
     $('.brand').on('click', () => {
         $('.navigation').slideToggle(500);
     });
 
     setTimeout(() => {
-        $('#app').fadeOut(700).remove();
+        $('#app').fadeOut(1500);
         $('body').css({
             overflow:'visible'
         })
-    }, 2000);
+    }, 1500);
 })
