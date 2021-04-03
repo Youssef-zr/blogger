@@ -36,7 +36,7 @@
                     <ul class="nav list-unstyled">
                         <li class="nav-item"><a href="{{url('/')}}">الرئيسية</a></li>
                         <li class="nav-item"><a href="{{url('/category/1')}}">أخبار</a></li>
-                        <li class="nav-item"><a href="#">سياسة</a></li>
+                        <li class="nav-item"><a href="{{url('/post/1')}}">سياسة</a></li>
                         <li class="nav-item"><a href="#">اقتصاد</a></li>
                         <li class="nav-item"><a href="#">مجتمع</a></li>
                         <li class="nav-item"><a href="#">تربية وتعليم</a></li>

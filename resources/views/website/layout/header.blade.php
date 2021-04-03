@@ -26,4 +26,8 @@
     </title>
 </head>
 <body>
-    
+
+    {{-- spinner --}}
+    <div id="app">
+        <spinner></spinner>
+    </div>

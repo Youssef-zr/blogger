@@ -13,6 +13,23 @@ use Illuminate\Support\Facades\Route;
 |
  */
 
+//  dashboard routes
+Auth::routes(['register'=>false]);
+
+Route::group(['prefix'=>"admin",'middleware'=>'auth'],function(){
+    Route::get('/','AdminController@index');
+    Route::resource('categories', "CategoryController");
+    Route::resource('posts', "PostController");
+});
+
 Route::get('/', 'AppController@index');
 Route::get('/category/{tag}', 'AppController@category');
 Route::get('/post/{tag}', 'AppController@singlePost');
+
+
+
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

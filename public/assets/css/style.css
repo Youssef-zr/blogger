@@ -1,3 +1,7 @@
+body{
+    overflow: hidden;
+}
+
 body > * {
     font-family: "Cairo", sans-serif;
 }
@@ -148,7 +152,7 @@ header .navigation ul li a:hover {
         background: #fff !important;
     }
     .navigation .menu .nav .nav-item {
-        background: #2196f3;
+        background: #e7252b;
         display: block;
         width: 100%;
         margin-bottom: 8px;

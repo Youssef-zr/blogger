@@ -24,9 +24,9 @@ class Post extends Model
     *
     * @return \Illuminate\Database\Eloquent\Relations\HasOne
     */
-   public function user(): HasOne
+   public function user()
    {
-       return $this->hasOne(User::class, 'id', 'author_id');
+       return $this->hasOne(User::class,'id','author_id');
    }
 
 }

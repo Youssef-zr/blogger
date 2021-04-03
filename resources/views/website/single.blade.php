@@ -49,11 +49,13 @@
 @section('recent-posts')
    {{-- Recent Posts --}}
    <section class="recent-post card">
-        <div class="card-header text-right">
-            <h4 class="bg-primary text-white p-2 d-inline-block"> 
-                <i class="fa fa-history ml-2"></i>
-                مواضيع ذات صلة
-            </h4>
+        <div class="card-header text-right p-2">
+            <a href="#">
+                <h4 class="bg-primary text-white p-2 d-inline-block my-0"> 
+                    <i class="fa fa-history ml-2"></i>
+                    مواضيع ذات صلة
+                </h4>
+            </a>
         </div>
          {{-- posts carousel --}}
          <div class="card-body posts-cards">

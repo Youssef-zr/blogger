@@ -18,12 +18,11 @@ class CreatePostsTable extends Migration
             $table->text('title');
             $table->string('slug');
             $table->string('summary');
-            $table->string('image')->nullable()->default('default.png');
-            $table->bigInteger('author_id')->unsigned();
+            $table->string('image')->nullable()->default('website/posts/default.png');
+            $table->string('user');
             $table->text('content');
             $table->string('meta_title')->nullable();
-            $table->integer('published')->nullable()->default(1);
-            $table->foreign('author_id')->references('id')->on('users')->onDelete('cascade');
+            $table->integer('published')->nullable()->default(0);
             $table->timestamps();
         });
     }

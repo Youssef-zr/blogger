@@ -3,11 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class Category extends Model
 {
    protected $table="Categories";
-   protected $guarded=[];
+   protected $guarded=['createdAt'];
 
    /**
     * Get all of the posts for the category
@@ -17,5 +18,11 @@ class Category extends Model
    public function posts(): HasMany
    {
        return $this->belongsToMany(Post::class,'category_post', 'category_id', 'post_id');
+   }
+
+   public function getCreatedAtAttribute( $value)
+   {
+        Carbon::setlocale('ar');
+        return \Carbon\Carbon::parse($value)->diffForHumans();
    }
 }
