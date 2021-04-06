@@ -21,7 +21,7 @@
         أخبار اليوم
         @if (isset($title))
             |
-            $title
+            {{ $title }}
         @endif
     </title>
 </head>
