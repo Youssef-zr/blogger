@@ -3,248 +3,53 @@
 @section('content')
     {{-- posts section --}}
     <section class="posts-content">
-        {{-- card section --}}
-        <div class="card bg-light">
-            {{-- posts heading --}}
-            <div class="card-header bg-white text-right py-2"><a href="#"><h3 class="text-white my-0"> <span>مجتمع <i class="fa fa-chevron-circle-left"></i></span></h3></a></div>
+        @foreach ($latest_cat_posts as $category)
+            {{-- category has postes published --}}
+            @if (count($category->posts()->where('published','=',1)->get())>0)
+                {{-- card section --}}
+                <div class="card bg-light mb-4">
+                    {{-- posts heading --}}
+                    <div class="card-header bg-white text-right py-2"><a href="{{ url('/category/'.$category->slug) }}"><h3 class="text-white my-0"> <span>{{ $category->title }} <i class="fa fa-chevron-circle-left"></i></span></h3></a></div>
 
-            {{-- posts carousel --}}
-            <div class="card-body posts-cards">
-                <div class="owl-carousel owl-theme">
-                    {{-- post card --}}
-                    <div class="post-card text-right">
-                        <div class="post-image">
-                            <img src="{{url('assets/img/default.jpg')}}" class="img-thumbnail" alt="post image">
-                        </div>
-                        <div class="post-content">
-                            <p class="post-summary mt-2">عودة حركة الملاحة عبر قناة السويس بعد نحو أسبوع حبست خلالها التجارة العالمية أنفاسها</p>
-                            <div class="post-publish-date mb-2">
-                                <span class="text-danger">
-                                    <i class="fa fa-clock-o"></i>
-                                    30 مارس 2021
-                                </span>
+                    {{-- posts carousel --}}
+                    <div class="card-body posts-cards">
+                        <div class="owl-carousel owl-theme">
+
+                            @foreach ($category->posts as $post)
+                            {{-- post card --}}
+                            <div class="post-card text-right">
+                                <div class="post-image">
+                                    <img src="{{image_path($post->image)}}" class="img-thumbnail" alt="post image">
+                                </div>
+                                <div class="post-content">
+                                    <p class="post-summary mt-2">{{ $post->summary }}</p>
+                                    <div class="post-publish-date mb-2">
+                                        <span class="text-danger">
+                                            <i class="fa fa-clock-o"></i>
+                                            {{ $post->created_at }}
+                                        </span>
+                                    </div>
+                                    
+                                    <div class="read-more mt-3">
+                                        <a href="{{ url('/post/'.$post->slug) }}" class="btn btn-danger btn-sm">اقرأ المزيد <i class="fa fa-chevron-circle-left"></i></a>
+                                    </div>
+                                </div>
                             </div>
-                            
-                            <div class="read-more mt-3">
-                                <a href="#" class="btn btn-danger btn-sm">اقرأ المزيد <i class="fa fa-chevron-circle-left"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    {{-- post card --}}
-                    <div class="post-card text-right">
-                        <div class="post-image">
-                            <img src="{{url('assets/img/default.jpg')}}" class="img-thumbnail" alt="post image">
-                        </div>
-                        <div class="post-content">
-                            <p class="post-summary mt-2">عودة حركة الملاحة عبر قناة السويس بعد نحو أسبوع حبست خلالها التجارة العالمية أنفاسها</p>
-                            <div class="post-publish-date mb-2">
-                                <span class="text-danger">
-                                    <i class="fa fa-clock-o"></i>
-                                    30 مارس 2021
-                                </span>
-                            </div>
-                            
-                            <div class="read-more mt-3">
-                                <a href="#" class="btn btn-danger btn-sm">اقرأ المزيد <i class="fa fa-chevron-circle-left"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    {{-- post card --}}
-                    <div class="post-card text-right">
-                        <div class="post-image">
-                            <img src="{{url('assets/img/default.jpg')}}" class="img-thumbnail" alt="post image">
-                        </div>
-                        <div class="post-content">
-                            <p class="post-summary mt-2">عودة حركة الملاحة عبر قناة السويس بعد نحو أسبوع حبست خلالها التجارة العالمية أنفاسها</p>
-                            <div class="post-publish-date mb-2">
-                                <span class="text-danger">
-                                    <i class="fa fa-clock-o"></i>
-                                    30 مارس 2021
-                                </span>
-                            </div>
-                            
-                            <div class="read-more mt-3">
-                                <a href="#" class="btn btn-danger btn-sm">اقرأ المزيد <i class="fa fa-chevron-circle-left"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    {{-- post card --}}
-                    <div class="post-card text-right">
-                        <div class="post-image">
-                            <img src="{{url('assets/img/default.jpg')}}" class="img-thumbnail" alt="post image">
-                        </div>
-                        <div class="post-content">
-                            <p class="post-summary mt-2">عودة حركة الملاحة عبر قناة السويس بعد نحو أسبوع حبست خلالها التجارة العالمية أنفاسها</p>
-                            <div class="post-publish-date mb-2">
-                                <span class="text-danger">
-                                    <i class="fa fa-clock-o"></i>
-                                    30 مارس 2021
-                                </span>
-                            </div>
-                            
-                            <div class="read-more mt-3">
-                                <a href="#" class="btn btn-danger btn-sm">اقرأ المزيد <i class="fa fa-chevron-circle-left"></i></a>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        {{-- card section --}}
-        <div class="card bg-light mt-4 mt-md-4">
-            {{-- posts heading --}}
-            <div class="card-header bg-white text-right py-2"><a href="#"><h3 class="text-white my-0"> <span>اقتصاد <i class="fa fa-chevron-circle-left"></i></span></h3></a></div>
-
-            {{-- posts carousel --}}
-            <div class="card-body posts-cards">
-                <div class="owl-carousel owl-theme">
-                    {{-- post card --}}
-                    <div class="post-card text-right">
-                        <div class="post-image">
-                            <img src="{{url('assets/img/default.jpg')}}" class="img-thumbnail" alt="post image">
-                        </div>
-                        <div class="post-content">
-                            <p class="post-summary mt-2">عودة حركة الملاحة عبر قناة السويس بعد نحو أسبوع حبست خلالها التجارة العالمية أنفاسها</p>
-                            <div class="post-publish-date mb-2">
-                                <span class="text-danger">
-                                    <i class="fa fa-clock-o"></i>
-                                    30 مارس 2021
-                                </span>
-                            </div>
-                            
-                            <div class="read-more mt-3">
-                                <a href="#" class="btn btn-danger btn-sm">اقرأ المزيد <i class="fa fa-chevron-circle-left"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    {{-- post card --}}
-                    <div class="post-card text-right">
-                        <div class="post-image">
-                            <img src="{{url('assets/img/default.jpg')}}" class="img-thumbnail" alt="post image">
-                        </div>
-                        <div class="post-content">
-                            <p class="post-summary mt-2">عودة حركة الملاحة عبر قناة السويس بعد نحو أسبوع حبست خلالها التجارة العالمية أنفاسها</p>
-                            <div class="post-publish-date mb-2">
-                                <span class="text-danger">
-                                    <i class="fa fa-clock-o"></i>
-                                    30 مارس 2021
-                                </span>
-                            </div>
-                            
-                            <div class="read-more mt-3">
-                                <a href="#" class="btn btn-danger btn-sm">اقرأ المزيد <i class="fa fa-chevron-circle-left"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    {{-- post card --}}
-                    <div class="post-card text-right">
-                        <div class="post-image">
-                            <img src="{{url('assets/img/default.jpg')}}" class="img-thumbnail" alt="post image">
-                        </div>
-                        <div class="post-content">
-                            <p class="post-summary mt-2">عودة حركة الملاحة عبر قناة السويس بعد نحو أسبوع حبست خلالها التجارة العالمية أنفاسها</p>
-                            <div class="post-publish-date mb-2">
-                                <span class="text-danger">
-                                    <i class="fa fa-clock-o"></i>
-                                    30 مارس 2021
-                                </span>
-                            </div>
-                            
-                            <div class="read-more mt-3">
-                                <a href="#" class="btn btn-danger btn-sm">اقرأ المزيد <i class="fa fa-chevron-circle-left"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    {{-- post card --}}
-                    <div class="post-card text-right">
-                        <div class="post-image">
-                            <img src="{{url('assets/img/default.jpg')}}" class="img-thumbnail" alt="post image">
-                        </div>
-                        <div class="post-content">
-                            <p class="post-summary mt-2">عودة حركة الملاحة عبر قناة السويس بعد نحو أسبوع حبست خلالها التجارة العالمية أنفاسها</p>
-                            <div class="post-publish-date mb-2">
-                                <span class="text-danger">
-                                    <i class="fa fa-clock-o"></i>
-                                    30 مارس 2021
-                                </span>
-                            </div>
-                            
-                            <div class="read-more mt-3">
-                                <a href="#" class="btn btn-danger btn-sm">اقرأ المزيد <i class="fa fa-chevron-circle-left"></i></a>
-                            </div>
-                        </div>
-                    </div>
+            @else
+                <div class="col">
+                    <P class="alert alert-danger d-block text-center py-2 mt-5" style="font-size: 18px">
+                        لا يوجد أي مقالات 
+                    </P>
                 </div>
-            </div>
-        </div>
-        {{-- card section --}}
-        <div class="card bg-light mt-4 mt-md-4">
-            {{-- posts heading --}}
-            <div class="card-header bg-white text-right py-2"><a href="#"><h3 class="text-white my-0"> <span>رياضة <i class="fa fa-chevron-circle-left"></i></span></h3></a></div>
-
-            {{-- posts carousel --}}
-            <div class="card-body posts-cards">
-                <div class="owl-carousel owl-theme">
-                    {{-- post card --}}
-                    <div class="post-card text-right">
-                        <div class="post-image">
-                            <img src="{{url('assets/img/default.jpg')}}" class="img-thumbnail" alt="post image">
-                        </div>
-                        <div class="post-content">
-                            <p class="post-summary mt-2">عودة حركة الملاحة عبر قناة السويس بعد نحو أسبوع حبست خلالها التجارة العالمية أنفاسها</p>
-                            <div class="post-publish-date mb-2">
-                                <span class="text-danger">
-                                    <i class="fa fa-clock-o"></i>
-                                    30 مارس 2021
-                                </span>
-                            </div>
-                            
-                            <div class="read-more mt-3">
-                                <a href="#" class="btn btn-danger btn-sm">اقرأ المزيد <i class="fa fa-chevron-circle-left"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    {{-- post card --}}
-                    <div class="post-card text-right">
-                        <div class="post-image">
-                            <img src="{{url('assets/img/default.jpg')}}" class="img-thumbnail" alt="post image">
-                        </div>
-                        <div class="post-content">
-                            <p class="post-summary mt-2">عودة حركة الملاحة عبر قناة السويس بعد نحو أسبوع حبست خلالها التجارة العالمية أنفاسها</p>
-                            <div class="post-publish-date mb-2">
-                                <span class="text-danger">
-                                    <i class="fa fa-clock-o"></i>
-                                    30 مارس 2021
-                                </span>
-                            </div>
-                            
-                            <div class="read-more mt-3">
-                                <a href="#" class="btn btn-danger btn-sm">اقرأ المزيد <i class="fa fa-chevron-circle-left"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    {{-- post card --}}
-                    <div class="post-card text-right">
-                        <div class="post-image">
-                            <img src="{{url('assets/img/default.jpg')}}" class="img-thumbnail" alt="post image">
-                        </div>
-                        <div class="post-content">
-                            <p class="post-summary mt-2">عودة حركة الملاحة عبر قناة السويس بعد نحو أسبوع حبست خلالها التجارة العالمية أنفاسها</p>
-                            <div class="post-publish-date mb-2">
-                                <span class="text-danger">
-                                    <i class="fa fa-clock-o"></i>
-                                    30 مارس 2021
-                                </span>
-                            </div>
-                            
-                            <div class="read-more mt-3">
-                                <a href="#" class="btn btn-danger btn-sm">اقرأ المزيد <i class="fa fa-chevron-circle-left"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+                @php
+                    break;
+                @endphp
+            @endif
+        @endforeach
     </section>
 @endsection
 

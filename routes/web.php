@@ -26,10 +26,9 @@ Route::get('/', 'AppController@index');
 Route::get('/category/{tag}', 'AppController@category');
 Route::get('/post/{tag}', 'AppController@singlePost');
 
+Route::get('/contact', function () {
+    $title = 'اتصل بنا';
+    return view("website/contact",compact('title'));
+});
 
-
-
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
+Route::post('/contact','ContactController@store');

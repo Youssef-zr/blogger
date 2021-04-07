@@ -8772,6 +8772,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
     ScaleLoader: _saeris_vue_spinners__WEBPACK_IMPORTED_MODULE_0__["ScaleLoader"]
+  },
+  data: function data() {
+    return {
+      load: true
+    };
   }
 });
 
@@ -45139,7 +45144,7 @@ var render = function() {
       [
         _c("ScaleLoader", {
           staticClass: "spinner",
-          attrs: { color: "#b412d6", loading: "true", size: "30" }
+          attrs: { color: "#b412d6", loading: _vm.load, size: "30" }
         })
       ],
       1

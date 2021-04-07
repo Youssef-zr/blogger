@@ -13,12 +13,12 @@ class CategoryTableSeeder extends Seeder
     public function run()
     {
         $categories = [
-            ['title'=>"أخبار","meta_tag"=>"News","slug"=>"smart_phone"],
-            ['title'=>"سياسة","meta_tag"=>"Policy","slug"=>"trinding_movies"],
-            ['title'=>"اقتصاد","meta_tag"=>"Economy","slug"=>"programming"],
-            ['title'=>"مجتمع","meta_tag"=>"Community","slug"=>"programming"],
-            ['title'=>"تربية وتعليم","meta_tag"=>"education","slug"=>"programming"],
-            ['title'=>"رياضة","meta_tag"=>"Sport","slug"=>"programming"],
+            ['title'=>"أخبار","meta_tag"=>"News","slug"=>"News"],
+            ['title'=>"سياسة","meta_tag"=>"Policy","slug"=>"Policy"],
+            ['title'=>"اقتصاد","meta_tag"=>"Economy","slug"=>"Economy"],
+            ['title'=>"مجتمع","meta_tag"=>"Community","slug"=>"Community"],
+            ['title'=>"تربية وتعليم","meta_tag"=>"education","slug"=>"education"],
+            ['title'=>"رياضة","meta_tag"=>"Sport","slug"=>"Sport"],
         ];
 
         foreach ($categories as $category) {

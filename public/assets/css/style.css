@@ -1,4 +1,4 @@
-body{
+body {
     overflow: hidden;
 }
 
@@ -13,6 +13,12 @@ a:hover {
 .img-responsive {
     width: 100%;
     height: auto;
+}
+
+.pagination {
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
 }
 
 .pagination .page-item {
@@ -30,18 +36,18 @@ a:hover {
 
 .badge {
     cursor: pointer;
-    font-size:12px
+    font-size: 12px;
 }
 
-.text-underline{
+.text-underline {
     text-decoration: underline;
 }
 
-.owl-dots{
+.owl-dots {
     margin-top: 30px !important;
 }
-.owl-dots .active span{
-    background:#2196f3 !important
+.owl-dots .active span {
+    background: #2196f3 !important;
 }
 /* head ------------------- */
 header .head .top-space ul li {

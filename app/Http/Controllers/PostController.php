@@ -43,9 +43,10 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+        dd($request->all());
         $rules = [
-            'title' => 'required|string|min:5',
-            'slug' => 'required|string|min:5|max:15',
+            'title' => 'required|string|min:5|max:15|unique:posts,title',
+            'slug' => 'required|string|min:5|max:15|unique:posts,slug',
             'summary' => 'required|string|min:10|max:255',
             'meta_title' => 'required|string|min:10|max:128',
             'ckeditor' => 'required',
@@ -120,8 +121,8 @@ class PostController extends Controller
     {
         // dd($request->all());
         $rules = [
-            'title' => 'required|string|min:5',
-            'slug' => 'required|string|min:5|max:15',
+            'title' => 'required|string|min:5|max:15|unique:posts,slug,'.$post->title,
+            'slug' => 'required|string|min:5|max:15|unique:posts,slug,'.$post->slug,
             'summary' => 'required|string|min:10|max:255',
             'meta_title' => 'required|string|min:10|max:128',
             'ckeditor' => 'required',

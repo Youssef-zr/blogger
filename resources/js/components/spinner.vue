@@ -2,7 +2,7 @@
   <div class="spinner text-center">
     <h3 class="mb-4 text-center text-primary"><b>جاري التحميل</b></h3>
     <div class="spin">
-      <ScaleLoader class="spinner" color="#b412d6" loading="true" size="30" />
+      <ScaleLoader class="spinner" color="#b412d6" :loading="load" size="30" />
     </div>
   </div>
 </template>
@@ -12,6 +12,11 @@ import { ScaleLoader } from '@saeris/vue-spinners'
 export default {
   components: {
     ScaleLoader,
+  },
+  data() {
+    return {
+      load: true,
+    }
   },
 }
 </script>

@@ -15,7 +15,7 @@ class Category extends Model
     *
     * @return \Illuminate\Database\Eloquent\Relations\HasMany
     */
-   public function posts(): HasMany
+   public function posts()
    {
        return $this->belongsToMany(Post::class,'category_post', 'category_id', 'post_id');
    }

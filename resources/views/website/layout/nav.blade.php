@@ -13,14 +13,13 @@
                     </div>
                     <div class="col-7">
                         <ul class="list-unstyled d-flex mb-0 justify-content-end">
-                            <li><a href="#">لاعلاناتكم</a></li>
-                            <li><a href="#">اتصل بنا</a></li>
+                            <li><a href="{{ url('/contact') }}">اتصل بنا</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
             <div class="logo py-3 py-4">
-                <img src="{{url('/assets/img/logo-lg.png')}}" alt="logo">
+                <a href="{{ url('/') }}"> <img src="{{url('/assets/img/logo-lg.png')}}" alt="logo"> </a>
             </div>
         </div>
 
@@ -36,7 +35,7 @@
                     <ul class="nav list-unstyled">
                         <li class="nav-item"><a href="{{ url('/') }}">الرئيسية</a></li>
                         @foreach ($categories as $category)
-                        <li class="nav-item"><a href="{{url('/'.$category->title)}}">{{$category->title}}</a></li>
+                        <li class="nav-item"><a href="{{url('/category/'.$category->slug)}}">{{$category->title}}</a></li>
                         @endforeach
                     </ul>
                 </div>

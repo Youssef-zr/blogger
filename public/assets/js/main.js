@@ -6,9 +6,9 @@ $(() => {
     });
 
     setTimeout(() => {
-        $('#app').fadeOut(1500);
+        $('#app').fadeOut(700);
         $('body').css({
             overflow:'visible'
         })
-    }, 1500);
+    }, 700);
 })

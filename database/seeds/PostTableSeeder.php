@@ -15,22 +15,22 @@ class PostTableSeeder extends Seeder
     {
         $posts = [
 
-            ['title' => 'android 2021', 'slug' => "android_news", 'summary' => "Lorem ipsum dolor sit, amet consectetur adipisicing elit.","user"=>'youssef', 'meta_title' => "the android news", 'content' => "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam quos impedit beatae obcaecati quibusdam vitae eius quisquam aspernatur deserunt possimus! Velit animi quaerat cumque distinctio laborum accusantium temporibus minima ipsa.", 'published' => 0],
-            ['title' => 'iphone 2021', 'slug' => "android_news", 'summary' => "Lorem ipsum dolor sit, amet consectetur adipisicing elit.","user"=>'youssef', 'meta_title' => "the android news", 'content' => "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam quos impedit beatae obcaecati quibusdam vitae eius quisquam aspernatur deserunt possimus! Velit animi quaerat cumque distinctio laborum accusantium temporibus minima ipsa.", 'published' => 0],
-            ['title' => 'samsung 2021', 'slug' => "android_news", 'summary' => "Lorem ipsum dolor sit, amet consectetur adipisicing elit.","user"=>'youssef', 'meta_title' => "the android news", 'content' => "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam quos impedit beatae obcaecati quibusdam vitae eius quisquam aspernatur deserunt possimus! Velit animi quaerat cumque distinctio laborum accusantium temporibus minima ipsa.", 'published' => 0],
-            ['title' => 'huawei 2021', 'slug' => "android_news", 'summary' => "Lorem ipsum dolor sit, amet consectetur adipisicing elit.","user"=>'youssef', 'meta_title' => "the android news", 'content' => "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam quos impedit beatae obcaecati quibusdam vitae eius quisquam aspernatur deserunt possimus! Velit animi quaerat cumque distinctio laborum accusantium temporibus minima ipsa.", 'published' => 0],
-            ['title' => 'lg 2021', 'slug' => "android_news", 'summary' => "Lorem ipsum dolor sit, amet consectetur adipisicing elit.","user"=>'youssef', 'meta_title' => "the android news", 'content' => "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam quos impedit beatae obcaecati quibusdam vitae eius quisquam aspernatur deserunt possimus! Velit animi quaerat cumque distinctio laborum accusantium temporibus minima ipsa.", 'published' => 0],
+            ['title' => 'android 2021', 'slug' => "android", 'summary' => "عودة حركة الملاحة عبر قناة السويس بعد نحو أسبوع حبست خلالها التجارة العالمية أنفاسها","user"=>'youssef', 'meta_title' => "the android news", 'content' => "عودة حركة الملاحة عبر قناة السويس بعد نحو أسبوع حبست خلالها التجارة العالمية أنفاسها", 'published' => 0],
+            ['title' => 'iphone 2021', 'slug' => "iphone", 'summary' => "عودة حركة الملاحة عبر قناة السويس بعد نحو أسبوع حبست خلالها التجارة العالمية أنفاسها","user"=>'youssef', 'meta_title' => "the android news", 'content' => "عودة حركة الملاحة عبر قناة السويس بعد نحو أسبوع حبست خلالها التجارة العالمية أنفاسها", 'published' => 0],
+            ['title' => 'samsung 2021', 'slug' => "samsung", 'summary' => "عودة حركة الملاحة عبر قناة السويس بعد نحو أسبوع حبست خلالها التجارة العالمية أنفاسها","user"=>'youssef', 'meta_title' => "the android news", 'content' => "عودة حركة الملاحة عبر قناة السويس بعد نحو أسبوع حبست خلالها التجارة العالمية أنفاسها", 'published' => 0],
+            ['title' => 'huawei 2021', 'slug' => "huawei", 'summary' => "عودة حركة الملاحة عبر قناة السويس بعد نحو أسبوع حبست خلالها التجارة العالمية أنفاسها","user"=>'youssef', 'meta_title' => "the android news", 'content' => "عودة حركة الملاحة عبر قناة السويس بعد نحو أسبوع حبست خلالها التجارة العالمية أنفاسها", 'published' => 0],
+            ['title' => 'lg 2021', 'slug' => "lg", 'summary' => "عودة حركة الملاحة عبر قناة السويس بعد نحو أسبوع حبست خلالها التجارة العالمية أنفاسها","user"=>'youssef', 'meta_title' => "the android news", 'content' => "عودة حركة الملاحة عبر قناة السويس بعد نحو أسبوع حبست خلالها التجارة العالمية أنفاسها", 'published' => 0],
         ];
 
-        $cats_ids = [1,2,3,4,5,6];
-        
+        $cats = [1,2,3,4,5,6];
+
         foreach ($posts as $post) {
 
             $new = new Post();
             $new->fill($post)->save();
 
-            $arr = array_rand($cats_ids,2);
-            $new->categories()->sync($arr);
+            $ids = [$cats[random_int(1,5)],$cats[random_int(1,5)],$cats[random_int(1,5)]];
+            $new->categories()->sync($ids);
         }
     }
 }

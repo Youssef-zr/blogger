@@ -55,13 +55,13 @@
     </div>
     {{-- content field --}}
     <div class="col-md-12">
-        <div class="form-group {{$errors->has('ckeditor') ? 'has-error' : ''}}">
-            {!! Form::label('ckeditor', ' المقال :', ['class'=>'form-label']) !!}
-            {!! Form::textarea('ckeditor', old('ckeditor'), ['class'=>'form-control',"placeholder"=>"المقال","name"=>'ckeditor']) !!}
+        <div class="form-group {{$errors->has('content') ? 'has-error' : ''}}">
+            {!! Form::label('content', ' المقال :', ['class'=>'form-label']) !!}
+            {!! Form::textarea('content', old('content') , ['class'=>'form-control',"placeholder"=>"المقال","name"=>'content']) !!}
 
-            @if ($errors->has('ckeditor'))
+            @if ($errors->has('content'))
             <span class="help-block">
-                <strong>{{$errors->first('ckeditor')}}</strong>
+                <strong>{{$errors->first('content')}}</strong>
             </span>
             @endif
         </div>
@@ -173,7 +173,7 @@
         $(function(){
 
             // ckeditor
-            CKEDITOR.replace( 'ckeditor' ,{
+            CKEDITOR.replace( 'content' ,{
                 language: 'ar'
             });
         

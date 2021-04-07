@@ -26,8 +26,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $categories = Category::all();
-        $latest_six_posts = Post::limit(7)->get();
+        $categories = Category::whereHas('posts')->get();
+        $latest_six_posts = Post::limit(5)->where('published',"=",1)->get();
 
         view()->share(['categories'=>$categories,'latest_six_posts'=>$latest_six_posts]);
         Schema::defaultStringLength(191);
