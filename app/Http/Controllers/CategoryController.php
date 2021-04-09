@@ -91,9 +91,10 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
+        
         $rurles = [
-            'title' => 'required|string|max:255|unique:categories,title,'.$category->title,
-            'slug' => 'required|string|unique:categories,slug,'.$category->slug,
+            'title' => 'required|string|max:255|unique:categories,title,'.$category->id,
+            'slug' => 'required|string|unique:categories,slug,'.$category->id,
             'meta_tag' => 'nullable|max:128|min:10',
         ];
 

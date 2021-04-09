@@ -236,6 +236,18 @@ aside .latest-posts .post-title:hover p {
     padding: 5px 10px 15px 5px;
     border-radius: 0 0 5px 5px;
 }
+
+/* single page */
+.single-post .description {
+    text-align: center;
+}
+.single-post .description p{
+    font-size:17px;
+    text-align: right;
+}
+.single-post .description p img{
+    margin:auto
+}
 /* footer ------------------ */
 footer .logo {
     width: 120px;
@@ -249,3 +261,4 @@ footer p {
     font-size: 17px;
     line-height: 1.7;
 }
+

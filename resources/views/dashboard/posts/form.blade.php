@@ -116,9 +116,9 @@
     <div class="col-md-4">
         <div class='text-right'>
             @if (isset($post))
-                <img src="{{image_path($post->image)}}" alt="site icon" srcset="" class="img-thumbnail image-preview"
+                <img src="{{ image_path($post->image) }}" alt="site icon" srcset="" class="img-thumbnail image-preview"
             @else
-                <img src="{{ \Storage::url('website/bu_images/default.png') }}" alt="site icon" srcset="" class="img-thumbnail image-preview"
+                <img src="{{ \Storage::url('website/posts/default.png') }}" alt="site icon" srcset="" class="img-thumbnail image-preview"
             @endif
             style="width:105px;height:105px;margin-top:16px"
             >
@@ -160,7 +160,7 @@
         }
 
         /* ckeditor error */
-        .has-error #cke_ckeditor{
+        .has-error #cke_content{
             border:1px solid #dd4b39;
             padding:2px;
         }
@@ -169,6 +169,9 @@
 
 @push('js')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+    <!-- bootstrap wysihtml5 - text editor -->
+    {!! Html::script('adminlte/bower_components/ckeditor/ckeditor.js') !!}
+    
     <script>
         $(function(){
 

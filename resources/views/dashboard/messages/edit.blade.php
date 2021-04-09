@@ -8,22 +8,23 @@
     </h1>
     <ol class="breadcrumb">
         <li><a href="{{adminurl('/')}}"><i class="fa fa-dashboard"></i> الرئيسية</a></li>
-        <li><a href="{{adminUrl('categories')}}"> <i class="fa fa-tags"></i> الأصناف</a></li>
-        <li class="active"> {{ $title }}</li>
+        <li><a href="{{adminUrl('contact')}}"> <i class="fa fa-envelope"></i> الرسائل</a></li>
+        <li class="active">{{ $title }}</li>
     </ol>
     </section>
 @endsection
 
 @section('content')
-<div class="box">
 
+<div class="box">
     <div class="box-header">
-        <h3> {{$title}} </h3>
+        <h3>{{$title}}</h3>
     </div>
     <div class="box-body">
+        <form action="" ></form>
 
-        {!! Form::open(['route'=>'categories.store','method'=>'POST']) !!}
-            @include('dashboard.categories.form')
+        {!! Form::model($contact,['route'=>['contact.update',$contact->id],'method'=>'PUT']) !!}
+            @include('dashboard.messages.form')
         {!! Form::close() !!}
     </div>
 </div>

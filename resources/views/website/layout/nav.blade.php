@@ -13,7 +13,11 @@
                     </div>
                     <div class="col-7">
                         <ul class="list-unstyled d-flex mb-0 justify-content-end">
+                            @auth
+                                <li><a href="{{ adminUrl('/') }}" class="text-white">لوحة التحكم</a></li>
+                            @endauth
                             <li><a href="{{ url('/contact') }}">اتصل بنا</a></li>
+                            <li><a href="{{ url('/contact') }}">أعلن معنا</a></li>
                         </ul>
                     </div>
                 </div>

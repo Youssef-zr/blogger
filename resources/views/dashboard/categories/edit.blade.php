@@ -8,7 +8,7 @@
     </h1>
     <ol class="breadcrumb">
         <li><a href="{{adminurl('/')}}"><i class="fa fa-dashboard"></i> الرئيسية</a></li>
-        <li><a href="{{adminUrl('categories')}}"> <i class="fa fa-users"></i> الأصناف</a></li>
+        <li><a href="{{adminUrl('categories')}}"> <i class="fa fa-tags"></i> الأصناف</a></li>
         <li class="active">{{ $title }}</li>
     </ol>
     </section>

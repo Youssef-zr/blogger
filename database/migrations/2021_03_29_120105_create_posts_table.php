@@ -18,7 +18,7 @@ class CreatePostsTable extends Migration
             $table->text('title');
             $table->string('slug');
             $table->string('summary');
-            $table->string('image')->nullable()->default('website/posts/default.png');
+            $table->string('image')->nullable()->default('website/default.png');
             $table->string('user');
             $table->text('content');
             $table->string('meta_title')->nullable();

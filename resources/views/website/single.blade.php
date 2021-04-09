@@ -38,7 +38,7 @@
                     <img src="{{ image_path($post->image) }}" alt="post image" class="img-responsive">
                 </div>
                 <div class="description" style="line-height: 1.8;font-size:18px;padding-left:46px">
-                    {{ $post->content }}
+                    {!! $post->content !!}
                 </div>
             </div>
         </div>
@@ -79,7 +79,6 @@
                                         {{ $post->created_at }}
                                     </span>
                                 </div>
-                                {{ $post->id }}
                                 <div class="read-more mt-3">
                                     <a href="{{ url('/post/'.$post->slug) }}" class="btn btn-danger btn-sm">اقرأ المزيد <i class="fa fa-chevron-circle-left"></i></a>
                                 </div>
@@ -132,4 +131,15 @@
 @section('css')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"/>
+
+    <style>
+        .post-image{
+            width:200px;
+            margin: 15px 0;
+        }
+
+        .post-image img{
+            max-width: 100%
+        }
+    </style>
 @endsection

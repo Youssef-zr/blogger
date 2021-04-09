@@ -12,10 +12,10 @@
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
-  {!! Html::style('adminlte/bower_components/bootstrap/dist/css/bootstrap.css') !!}
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
   <!-- Font Awesome -->
-  {!! Html::style('adminlte/bower_components/font-awesome/css/font-awesome.min.css') !!}
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
 
   <!-- Theme style Rtl -->
   {!! Html::style('adminlte/RTL/AdminLTE.min.css') !!}
@@ -27,19 +27,10 @@
     {!! Html::style('adminlte/dist/css/skins/_all-skins.min.css') !!}
   {{-- folder instead of downloading all of theme to reduce the load --}}
 
-  {{--  dataTabels  --}}
-    {!! Html::style('adminlte/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css') !!}
-  {{--  dataTabels  --}}
-
-    {{-- select2 --}}
-    {!! Html::style('adminlte/plugins/select2/css/select2.min.css') !!}
-
-   {{-- noty plugin --}}
-   {!! Html::style('adminlte/plugins/Noty/themes/relax.css') !!}
-   {!! Html::style('adminlte/plugins/Noty/noty.css') !!}
-
-  <!-- bootstrap wysihtml5 - text editor -->
-  <link rel="stylesheet" href="{{ url('/') }}/adminlte/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+  {{-- noty plugin --}}
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.css"/>
+  {{--  noty plugin script  --}}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js"></script> 
 
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->

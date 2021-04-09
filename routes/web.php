@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Category;
+use App\Post;
+use App\Contact;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,9 +19,14 @@ use Illuminate\Support\Facades\Route;
 Auth::routes(['register'=>false]);
 
 Route::group(['prefix'=>"admin",'middleware'=>'auth'],function(){
+    Route::get('/logout', function () {
+        Auth::logout();
+        return redirect(url('/'));
+    });
     Route::get('/','AdminController@index');
     Route::resource('categories', "CategoryController");
     Route::resource('posts', "PostController");
+    Route::resource('contact', 'ContactController');
 });
 
 Route::get('/', 'AppController@index');

@@ -19,7 +19,7 @@
                             <div class="col-8 pl-1">
                                 <div class="post-title">
                                     <a href="#" class="text-dark">
-                                        <p class="mt-2">{{ \Illuminate\Support\Str::limit($item->summary, 170, '...') }}</p>
+                                        <p class="mt-2"><a href="{{ url('/post/'.$item->slug) }}" class="text-dark">{{ \Illuminate\Support\Str::limit($item->summary, 170, '...') }}</a></p>
                                     </a>
                                 </div>
                             </div>

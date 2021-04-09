@@ -19,6 +19,7 @@ class Contact extends Migration
            $table->string('email');
            $table->string('subject', 100);
            $table->text('msg',300);
+           $table->integer('status')->nullable()->default(0);
            $table->timestamps();
         });
     }

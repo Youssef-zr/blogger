@@ -208,10 +208,10 @@
 
 <!-- jQuery 3 -->
 {{-- {!! Html::script('adminlte/bower_components/jquery/dist/jquery.min.js') !!} --}}
-{!! Html::script('adminlte/bower_components/jquery/dist/jquery.min.js') !!}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 <!-- Bootstrap 3.3.7 -->
-{!! Html::script('adminlte/bower_components/bootstrap/dist/js/bootstrap.min.js') !!}
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
 <!-- AdminLTE App -->
 {!! Html::script('adminlte/dist/js/adminlte.min.js') !!}
@@ -219,9 +219,6 @@
 {{-- {!! Html::script('adminlte/dist/js/pages/dashboard2.js') !!} --}}
 <!-- AdminLTE for demo purposes -->
 {!! Html::script('adminlte/dist/js/demo.js') !!}
-
-<!-- bootstrap wysihtml5 - text editor -->
-{!! Html::script('adminlte/bower_components/ckeditor/ckeditor.js') !!}
 
 
 <script>
@@ -241,8 +238,6 @@
     })
 </script>
 
-{{--  noty plugin script  --}}
-{!! Html::script('adminlte/plugins/Noty/noty.js') !!}
 
 {{--  stack used to handled the fire code raning   --}}
 @stack('js')

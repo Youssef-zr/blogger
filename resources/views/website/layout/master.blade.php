@@ -24,3 +24,4 @@
 </section>
 
 @include('/website/layout/footer')
+@include('_partial._messages')

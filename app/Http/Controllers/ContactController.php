@@ -14,7 +14,9 @@ class ContactController extends Controller
      */
     public function index()
     {
-        //
+        $title = 'قائمة الرسائل';
+        $messages = Contact::all();
+        return view('dashboard/messages/index', compact('title', 'messages'));
     }
 
     /**
@@ -35,25 +37,28 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
-        $rules =[
-            "name"=>'required|string|max:40',
-            'email'=>'required|email|string',
-            'subject'=>'required|string|max:100',
-            'msg'=>'required|string|max:300',
+
+        $rules = [
+            "name" => 'required|string|max:40',
+            'email' => 'required|email',
+            'subject' => 'required|string|max:100|min:10',
+            'msg' => 'required|string|max:300|min:10',
         ];
 
-        $niceNames =[
-            'name'=>"حقل الاسم",
-            'email'=>"حقل البريد الالكتروني",
-            'subject'=>"حقل الموضوع",
-            'msg'=>"حقل الرسالة",
+        $niceNames = [
+            'name' => "حقل الاسم",
+            'email' => "حقل البريد الالكتروني",
+            'subject' => "حقل الموضوع",
+            'msg' => "حقل الرسالة",
         ];
 
-        $data = $this->Validate($request,$rules,[],$niceNames);
+        $data = $this->validate($request, $rules, [], $niceNames);
 
         $new = new Contact();
 
         $new->fill($data)->save();
+
+        update_messages();
 
         $request->session()->flash('msgSuccess', 'تم ارسال الرسالة بنجاح');
         return redirect(url('/'));
@@ -78,7 +83,11 @@ class ContactController extends Controller
      */
     public function edit(Contact $contact)
     {
-        //
+        $contact->fill(['status' => 1])->save();
+        update_messages();
+
+        $title = 'الرسالة';
+        return view('dashboard/messages/edit', compact('title', 'contact'));
     }
 
     /**
@@ -90,7 +99,30 @@ class ContactController extends Controller
      */
     public function update(Request $request, Contact $contact)
     {
-        //
+        $rules = [
+            "name" => 'required|string|max:40',
+            'email' => 'required|email',
+            'subject' => 'required|string|max:100',
+            'msg' => 'required|string|max:300',
+            'status' => 'required',
+        ];
+
+        $niceNames = [
+            'name' => "حقل الاسم",
+            'email' => "حقل البريد الالكتروني",
+            'subject' => "حقل الموضوع",
+            'msg' => "حقل الرسالة",
+            'status' => 'حالة الرسالة',
+        ];
+
+        $data = $this->Validate($request, $rules, [], $niceNames);
+
+        $contact->fill($data)->save();
+
+        update_messages();
+
+        $request->session()->flash('msgSuccess', 'تم تعديل الرسالة بنجاح');
+        return redirect(adminUrl('contact'));
     }
 
     /**
@@ -101,6 +133,10 @@ class ContactController extends Controller
      */
     public function destroy(Contact $contact)
     {
-        //
+        $contact->delete();
+        update_messages();
+
+        request()->session()->flash('msgSuccess', 'تم حذف العنصر بنجاح');
+        return redirect(adminUrl('/contact'));
     }
 }

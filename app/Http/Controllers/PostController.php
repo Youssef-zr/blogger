@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Post;
 use App\Category;
+use App\Post;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Facades\Image;
 
 class PostController extends Controller
 {
@@ -32,7 +33,7 @@ class PostController extends Controller
     {
         $title = 'اضافة مقال';
         $categories = Category::all();
-        return view('dashboard.posts.create', compact('title','categories'));
+        return view('dashboard.posts.create', compact('title', 'categories'));
     }
 
     /**
@@ -43,16 +44,16 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
+
         $rules = [
-            'title' => 'required|string|min:5|max:15|unique:posts,title',
+            'title' => 'required|string|min:5|max:150|unique:posts,title',
             'slug' => 'required|string|min:5|max:15|unique:posts,slug',
             'summary' => 'required|string|min:10|max:255',
             'meta_title' => 'required|string|min:10|max:128',
-            'ckeditor' => 'required',
+            'content' => 'required',
             'image' => 'nullable|image|mimes:png,jpg,gif,jpeg',
             "published" => 'nullable|numeric',
-            'categories'=>'nullable'
+            'categories' => 'nullable',
         ];
 
         $niceNames = [
@@ -60,7 +61,7 @@ class PostController extends Controller
             'slug' => 'معرف المقال',
             'summary' => 'الملخص',
             'meta_title' => 'وصف محرك البحث',
-            'ckeditor' => 'الوصف',
+            'content' => 'الوصف',
             'image' => 'صورة المقال',
             'published' => 'الحالة',
             'categories' => 'الصنف',
@@ -68,19 +69,27 @@ class PostController extends Controller
 
         $data = $this->validate($request, $rules, [], $niceNames);
 
-        $data['content'] = $request->ckeditor;
         $data['user'] = auth()->user()->name;
 
         $new = new Post();
-        $new->fill(Arr::except($data,["ckeditor",'categories']))->save();
+        $new->fill(Arr::except($data, ["ckeditor", 'categories']))->save();
 
         $new->categories()->sync($request->categories);
 
         if ($request->hasFile('image')) {
-            $data['image'] = $request->file('image')->store('website/posts/'.$new->id);
-            $new->fill(['image'=>$data['image']])->save();
-        }
+            // get the extension of image
+            $ext = $request->File('image')->getClientOriginalExtension();
 
+            $image = 'storage/website/posts/' . $new->id . '/' . time() . '.' . $ext;
+
+            // create new folder with the name of video id
+
+            mkdir(public_path('storage/website/posts/' . $new->id));
+
+            Image::make($request->image)->resize(480,330)->save(public_path($image));
+
+            $new->fill(['image' => $image])->save();
+        }
 
         $request->session()->flash('msgSuccess', 'تم اضافة المقال بنجاح');
         return redirect(adminUrl('posts'));
@@ -106,8 +115,9 @@ class PostController extends Controller
     public function edit(Post $post)
     {
         $title = 'تعديل مقال';
+     
         $categories = Category::all();
-        return view('dashboard.posts.edit', compact('title', 'post','categories'));
+        return view('dashboard.posts.edit', compact('title', 'post', 'categories'));
     }
 
     /**
@@ -119,16 +129,16 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        // dd($request->all());
+
         $rules = [
-            'title' => 'required|string|min:5|max:15|unique:posts,slug,'.$post->title,
-            'slug' => 'required|string|min:5|max:15|unique:posts,slug,'.$post->slug,
+            'title' => 'required|string|min:5|max:150|unique:posts,title,' . $post->id,
+            'slug' => 'required|string|min:5|max:15|unique:posts,slug,' . $post->id,
             'summary' => 'required|string|min:10|max:255',
             'meta_title' => 'required|string|min:10|max:128',
-            'ckeditor' => 'required',
+            'content' => 'required',
             'image' => 'nullable|image|mimes:png,jpg,gif,jpeg',
             "published" => 'required',
-            'categories'=>'nullable'
+            'categories' => 'nullable',
         ];
 
         $niceNames = [
@@ -136,7 +146,7 @@ class PostController extends Controller
             'slug' => 'معرف المقال',
             'summary' => 'الملخص',
             'meta_title' => 'وصف محرك البحث',
-            'ckeditor' => 'المقال',
+            'content' => 'المقال',
             'image' => 'صورة المقال',
             'published' => 'الحالة',
             'categories' => 'الصنف',
@@ -144,20 +154,33 @@ class PostController extends Controller
 
         $data = $this->validate($request, $rules, [], $niceNames);
 
-        $data['content'] = $request->ckeditor;
-        // $data['user'] = auth()->user()->name;
+        $data['user'] = auth()->user()->name;
 
         if ($request->hasFile('image')) {
-            if (Storage::has($post->image) and $post->image != 'website/posts/default.png') {
-                Storage::delete($post->image);
+
+            $oldImage = public_path($post->image);
+
+            if (file_exists($oldImage) and $post->image != 'website/posts/default.png') { // remove old image
+                @unlink($oldImage);
             }
 
-            $data['image'] = $request->file('image')->store('website/posts/'.$post->id);
+            // get the extension of image
+            $ext = $request->File('image')->getClientOriginalExtension();
+
+            $data['image'] = 'storage/website/posts/' . $post->id . '/' . time() . '.' . $ext;
+
+            if (!is_dir(public_path('storage/website/posts/' . $post->id))) {
+                // create new folder with the name of video id
+                mkdir(public_path('storage/website/posts/' . $post->id));
+            }
+
+            \Image::make($request->image)->resize(480,330)->save(public_path($data['image']));
+
         }
 
         $post->categories()->sync($request->categories);
 
-        $post->fill(Arr::except($data,["ckeditor",'categories']))->save();
+        $post->fill(Arr::except($data, ["ckeditor", 'categories']))->save();
 
         $request->session()->flash('msgSuccess', 'تم تعديل المقال بنجاح');
         return redirect(adminUrl('posts'));
@@ -171,11 +194,13 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        if (Storage::has('website/posts/'.$post->id)) {
+        if (Storage::has('website/posts/' . $post->id) and $post->image !="website/default.png") {
 
-            Storage::delete($post->image);
+            Storage::delete(str_replace('storage','',$post->image));
 
-            rmdir(public_path('storage/website/posts/' . $post->id)); // delete the folder id of post
+            if (!is_dir(public_path('storage/website/posts/' . $post->id))) {
+                rmdir(public_path('storage/website/posts/' . $post->id)); // delete the folder id of post
+            }
         }
 
         $post->delete();

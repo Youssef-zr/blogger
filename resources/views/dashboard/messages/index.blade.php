@@ -25,7 +25,7 @@
     </h1>
     <ol class="breadcrumb">
         <li><a href="{{adminurl('/')}}"><i class="fa fa-dashboard"></i> الرئيسية</a></li>
-        <li class="active"> <i class="fa fa-th-list"></i> {{$title}}</li>
+        <li class="active"> <i class="fa fa-envelope"></i> {{$title}}</li>
     </ol>
     </section>
 @endsection
@@ -36,7 +36,6 @@
 
     <div class="box-header">
         <h3>{{$title}}</h3>
-        <a href="{{adminUrl('posts/create')}}" class="btn btn-info pull-right btn-sm add"> <i class="fa fa-plus"></i> اضافة </a>
     </div>
     <div class="box-body">
 	<!-- row -->
@@ -52,53 +51,30 @@
 											<thead>
 												<tr role="row">
 													<th> # </th>
-													<th> العنوان </th>
-													<th> الصنف </th>
-													<th>  ملخص </th>
-													<th>  الكاتب </th>
+													<th> الاسم </th>
+													<th> البريد </th>
+													<th>  الموضوع </th>
 													<th>  الحالة </th>
 													<th> التحكم </th>
 												</tr>
 											</thead>
 											<tbody>
-												@foreach ($posts as $item)
-													<tr>
+												@foreach ($messages as $item)
+													<tr class="{{ $item->status == 0 ? 'bg-secondary':'' }}">
 														<td>{{$item->id}}</td>
-														<td>{{$item->title}}</td>
+														<td><label class="badge label-warning">{{$item->name}}</label></td>
+														<td>{{$item->email}}</td>
+														<td>{{$item->subject}}</td>
 														<td>
-                                                            @if(count($item->categories->toArray())>0)
-                                                                    @php
-                                                                        $i = 0;
-                                                                    @endphp
-                                                                @foreach ($item->categories as $category)
-                                                                    @if ($i%2==0)
-                                                                        <label class="badge label-success">{{ $category->title }}</label>
-                                                                    @else
-                                                                        <label class="badge label-warning">{{ $category->title }}</label>
-                                                                    @endif
-
-                                                                    @php
-                                                                        $i++;
-                                                                    @endphp
-
-                                                                @endforeach
+                                                            @if ($item->status==0)
+                                                                <label class="badge label-danger">غير مقروئة</label>
                                                             @else
-                                                                <label class="badge" style="background: rgb(122, 119, 119);color:#fff">غير مصنف</label>
-                                                            @endif
-                                                        </td>
-														<td>{{ \Illuminate\Support\Str::limit($item->summary, 30, '...') }}</td>
-														<td><label class="badge label-warning">{{$item->user}}</label></td>
-														<td>
-                                                            @if ($item->published == 1)
-                                                                <label class="badge label-success">مفعل</label>
-                                                            @else
-                                                                <label class="badge label-danger">مقفل</label>
+                                                                <label class="badge label-success">مقروئة</label>
                                                             @endif
                                                         </td>
                                                         <td>
                                                             <div class="btn-group">
-                                                                <a href="{{ adminUrl('posts/'.$item->id.'/edit') }}" class="btn btn-warning btn-sm" title='تعديل'  data-toggle="tooltip" ><i class="fa fa-pencil"></i></a>
-                                                                <a href="{{ url('/post/'.$item->slug) }}" class="btn btn-info btn-sm" title='استعراض'  data-toggle="tooltip" target="_blank"><i class="fa fa-eye"></i></a>
+                                                                <a href="{{ adminUrl('contact/'.$item->id.'/edit') }}" class="btn btn-info btn-sm" title='استعراض'  data-toggle="tooltip" ><i class="fa fa-eye"></i></a>
                                                                 <a href="#" class="btn btn-danger btn-sm delete" data-id="{{$item->id}}"  title='حذف' data-toggle="tooltip"><i class="fa fa-trash"></i></a>
                                                             </div>
                                                         </td>
@@ -139,7 +115,7 @@
         
         <!-- Modal footer -->
         <div class="modal-footer" style="text-align: center !important">
-            <form action="" data-url="{{adminUrl('posts')}}" method="post" style="display: none" id="form-delete">
+            <form action="" data-url="{{adminUrl('contact')}}" method="post" style="display: none" id="form-delete">
                 @csrf
                 @method('delete')
             </form>
@@ -155,6 +131,7 @@
 
 @push('js')
     <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+	<script src="https://cdn.datatables.net/plug-ins/1.10.22/i18n/Arabic.json"></script>
 	<script>
 		$(document).ready( function () {
 			$('#example').DataTable({
@@ -193,4 +170,12 @@
 
 		} );
 	</script>
+@endpush
+
+@push('css')
+    <style>
+        .bg-secondary,.bg-secondary .sorting_1{
+            background: #ddd!important;
+        }
+    </style>
 @endpush

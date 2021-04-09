@@ -2,9 +2,9 @@
     <!-- Logo -->
     <a href="{{ adminUrl('/') }}" class="logo hidden-xs">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>K</b>W</span>
+      <span class="logo-mini"><b>A</b>Y</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>khadamat </b>Web</span>
+      <span class="logo-lg"><b>Akhbar </b>Alyawm</span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">

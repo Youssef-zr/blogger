@@ -25,7 +25,7 @@
     </h1>
     <ol class="breadcrumb">
         <li><a href="{{adminurl('/')}}"><i class="fa fa-dashboard"></i> الرئيسية</a></li>
-        <li class="active"> {{$title}}</li>
+        <li class="active"> <i class="fa fa-tags"></i> {{$title}}</li>
     </ol>
     </section>
 @endsection
