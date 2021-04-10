@@ -35,7 +35,7 @@ class AppController extends Controller
         $related_posts = [];
 
         foreach ($post_cats as $category) {
-            array_push($related_posts, $category->posts()->where('published', "=", 1)->get());
+            array_push($related_posts, $category->posts()->where('published', "=", 1)->distinct()->limit(8)->get());
         }
 
         return view("/website/single", compact('post', 'related_posts'));

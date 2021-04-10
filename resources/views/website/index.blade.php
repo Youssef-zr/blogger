@@ -18,11 +18,11 @@
                             @foreach ($category->posts as $post)
                             {{-- post card --}}
                             <div class="post-card text-right">
-                                <div class="post-image">
+                                <div class="post-image h-75">
                                     <img src="{{image_path($post->image)}}" class="img-thumbnail" alt="post image">
                                 </div>
                                 <div class="post-content">
-                                    <p class="post-summary mt-2">{{ $post->summary }}</p>
+                                    <p class="post-summary mt-2">{{ \Illuminate\Support\Str::limit($post->summary, 130, '...') }}</p>
                                     <div class="post-publish-date mb-2">
                                         <span class="text-danger">
                                             <i class="fa fa-clock-o"></i>

@@ -9,7 +9,9 @@ body > * {
 a:hover {
     text-decoration: none;
 }
-
+.badge {
+    padding: 3px 5px 5px;
+}
 .img-responsive {
     width: 100%;
     height: auto;
@@ -53,23 +55,59 @@ a:hover {
 header .head .top-space ul li {
     color: #ffff;
     border-right: 1px solid #fff;
-    padding: 0 10px;
+    padding: 0 5px;
 }
-header .head .top-space ul li a i {
-    font-size: 20px;
-    transition: color ease 0.3s;
+
+.icon {
+    background: #fff;
+    padding: 1px 3px;
+    border-radius: 6px;
+    color: red;
+    transition: ease 0.4s;
+    font-size: 28px !important;
 }
-header .head .top-space ul li a i.fa-youtube-square:hover {
-    color: #ff0000;
+
+.icon i{
+    font-size: inherit;
 }
-header .head .top-space ul li a i.fa-facebook-square:hover,
-header .head .top-space ul li a i.fa-twitter-square:hover {
-    color: #1877f2;
+
+.icon:hover{
+    color:#222 !important
+}
+
+.icon.youtube {
+    color: #fd0100;
+}
+
+.icon.facebook {
+    color: #0c97ee;
+}
+
+.icon.twitter {
+    color: #20a7fc;
 }
 
 header .head .top-space ul li a {
     color: #fff;
     font-size: 16px;
+}
+
+@media (max-width: 992px) {
+    .top-space li a {
+        font-size: 14px !important;
+    }
+    header .head .top-space .col-7 ul li {
+        color: #ffff;
+        border-right: 1px solid #fff;
+        padding: 0px 5px;
+        margin-right: 2px;
+    }
+}
+
+@media (max-width: 992px) {
+    .hidden-sm {
+        display: none;
+    }
 }
 
 /* logo --------------------- */
@@ -158,7 +196,7 @@ header .navigation ul li a:hover {
         background: #fff !important;
     }
     .navigation .menu .nav .nav-item {
-        background: #e7252b;
+        background: #2196f3;
         display: block;
         width: 100%;
         margin-bottom: 8px;
@@ -172,6 +210,10 @@ header .navigation ul li a:hover {
 
     header .nav-bar .nav-brand {
         display: block;
+    }
+
+    header .head .logo {
+        width: 150px;
     }
 }
 @media (min-width: 768px) {
@@ -198,17 +240,18 @@ aside ul.list-group li.list-group-item {
 
 aside .post-categories label {
     transition: ease;
+    padding: 3px 5px 5px;
 }
 aside .post-categories label:hover {
     opacity: 0.8;
     background: #000;
 }
 
-aside .latest-posts .post-title:hover p {
+aside .latest-posts .post-title a {
     transition: color ease 0.5s;
 }
-aside .latest-posts .post-title:hover p {
-    color: #ff0000;
+aside .latest-posts .post-title a:hover {
+    color: #ff0000 !important;
 }
 
 /* Advertising apace */
@@ -231,22 +274,30 @@ aside .latest-posts .post-title:hover p {
     overflow: hidden;
 }
 
-.categories .category-posts .post-content {
+.categories .category-posts .post-card {
     box-shadow: 0 0 8px 0px rgba(0, 0, 0, 0.5);
     padding: 5px 10px 15px 5px;
-    border-radius: 0 0 5px 5px;
+    border-radius: 5px;
+}
+
+.categories .category-posts .post-image {
+    padding-bottom: 5px;
+}
+
+.categories .category-posts .post-content {
+    border-top: 1px solid #eee;
 }
 
 /* single page */
 .single-post .description {
     text-align: center;
 }
-.single-post .description p{
-    font-size:17px;
+.single-post .description p {
+    font-size: 17px;
     text-align: right;
 }
-.single-post .description p img{
-    margin:auto
+.single-post .description p img {
+    margin: auto;
 }
 /* footer ------------------ */
 footer .logo {
@@ -261,4 +312,3 @@ footer p {
     font-size: 17px;
     line-height: 1.7;
 }
-

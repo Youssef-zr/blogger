@@ -5,10 +5,9 @@ $(() => {
         $('.navigation').slideToggle(500);
     });
 
-    setTimeout(() => {
-        $('#app').fadeOut(700);
-        $('body').css({
-            overflow:'visible'
-        })
-    }, 700);
+    $('#app').fadeOut(1500);
+    $('body').css({
+        overflow:'visible'
+    })
+   
 })

@@ -59,14 +59,15 @@
             <img src="{{url('assets/img/avatar.png')}}" class="img-circle" alt="User Image">
 
             <p>
-              Admin
-              <small>{{auth()->user()->created_at}}</small>
+              {{auth()->user()->name}}
+              
+              <small style="margin-top:5px">تاريخ التسجيل <b>{{ created(auth()->user()->created_at) }}</b> </small>
             </p>
           </li>
           <!-- Menu Footer-->
           <li class="user-footer">
             <div class="pull-right">
-              <a href="{{ adminUrl('logout') }}" class="btn btn-default btn-flat">تسجيل الخروج</a>
+              <a href="{{ adminUrl('logout') }}" class="btn btn-primary btn-flat"> <i class="fa fa-sign-out" style="margin-left: 5px"></i> تسجيل الخروج </a>
             </div>
           </li>
         </ul>

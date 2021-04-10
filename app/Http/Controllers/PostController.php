@@ -83,10 +83,9 @@ class PostController extends Controller
             $image = 'storage/website/posts/' . $new->id . '/' . time() . '.' . $ext;
 
             // create new folder with the name of video id
-
             mkdir(public_path('storage/website/posts/' . $new->id));
 
-            Image::make($request->image)->resize(480,330)->save(public_path($image));
+            Image::make($request->image)->resize(380,337)->save(public_path($image));
 
             $new->fill(['image' => $image])->save();
         }
@@ -174,7 +173,7 @@ class PostController extends Controller
                 mkdir(public_path('storage/website/posts/' . $post->id));
             }
 
-            \Image::make($request->image)->resize(480,330)->save(public_path($data['image']));
+            \Image::make($request->image)->resize(380,337)->save(public_path($data['image']));
 
         }
 
@@ -198,7 +197,7 @@ class PostController extends Controller
 
             Storage::delete(str_replace('storage','',$post->image));
 
-            if (!is_dir(public_path('storage/website/posts/' . $post->id))) {
+            if (is_dir(public_path('storage/website/posts/' . $post->id))) {
                 rmdir(public_path('storage/website/posts/' . $post->id)); // delete the folder id of post
             }
         }

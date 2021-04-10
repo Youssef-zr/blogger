@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="contact text-right">
-        <div class="header mb-5">
+        <div class="header mb-3">
             <h3 class="bg-primary text-white py-2 pr-3" style="font-size: 18px"><i class="fa fa-share" aria-hidden="true"></i> اتصل بنا</h3>
         </div>
 
@@ -53,8 +53,8 @@
                 </span>
                 @endif
             </div>
-            <div class="form-group mt-4">
-                <button class="btn btn-primary btn-block"><i class="fa fa-send"></i> أرسل</button>
+            <div class="form-group mt-3">
+                <button class="btn btn-primary btn-block"><i class="fa fa-send"></i> أرســـــــل</button>
             </div>
         </form>
     </div>
@@ -67,15 +67,15 @@
             border:1px solid #2196f3;
             border-left-width: 5px;
             border-left-color: #2196f3;
-            padding:15px;
+            padding:10px 15px 5px;
             border-radius: 0 5px 5px 0;
         }
         .form-label{
             direction:ltr !important
         }
         .btn{
-            padding:8px;
-            font-size: 20px
+            padding:8px 0 12px;
+            font-size: 18px
         }
 
         .form-group.has-error label {

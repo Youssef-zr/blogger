@@ -136,7 +136,10 @@
 
 
 @push('css')
+
+    {{-- select 2 styleSheet --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css"/>
+
     <style>
         .btn{
             position:relative;
@@ -165,11 +168,14 @@
             padding:2px;
         }
     </style>
+
 @endpush
 
 @push('js')
+
+    {{-- select 2 script --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
-    <!-- bootstrap wysihtml5 - text editor -->
+    <!-- CkEditor - text editor -->
     {!! Html::script('adminlte/bower_components/ckeditor/ckeditor.js') !!}
     
     <script>
@@ -193,7 +199,7 @@
                 allowClear: true,
                 language: "ar",
                 dir:'rtl',
-                maximumSelectionLength: 4,
+                maximumSelectionLength: 3,
             })
 
             // preview image when the file is changed
@@ -207,5 +213,6 @@
                 $reader.readAsDataURL(this.files[0]);
             });
     })
+
     </script>
 @endpush

@@ -12,27 +12,27 @@
                     <article class="post">
                         <div class="row">
                             <div class="col-4 px-0 d-flex align-items-center">
-                                <div class="post-image d-block h-100">
+                                <div class="post-image d-block h-75">
                                     <img src="{{ image_path($item->image) }}" class="img-responsive img-thumbnail h-100" alt="post image">
                                 </div>
                             </div>
-                            <div class="col-8 pl-1">
-                                <div class="post-title">
-                                    <a href="#" class="text-dark">
-                                        <p class="mt-2"><a href="{{ url('/post/'.$item->slug) }}" class="text-dark">{{ \Illuminate\Support\Str::limit($item->summary, 170, '...') }}</a></p>
+                            <div class="col-8 pl-1 py-0 d-flex flex-column align-items-end justify-content-center">
+                                <div class="post-title my-0">
+                                    <a href="{{ url('/post/'.$item->slug) }}" class="text-dark">
+                                        <p>{{ \Illuminate\Support\Str::limit($item->summary, 82, '...') }}</p>
                                     </a>
                                 </div>
-                            </div>
-                            <div class="col post-categories mt-3">
-                                <ul class="list-unstyled d-flex justify-content-end pl-0">
-                                    @if (count($item->categories->toArray())>0)
-                                        @foreach ($item->categories as $category)
-                                            <li class="ml-1"><a href="{{ url('/category/'.$category->slug) }}"><label class="badge badge-primary">{{$category->title}}</label></a></li>
-                                        @endforeach
-                                    @else
-                                        <li class="ml-1"><a href="#"><label class="badge badge-secondary">غير مصنف</label></a></li>
-                                    @endif
-                                </ul>
+                                <div class="post-categories mt-1">
+                                    <ul class="list-unstyled d-flex justify-content-start pl-0 ml-auto">
+                                        @if (count($item->categories->toArray())>0)
+                                            @foreach ($item->categories as $category)
+                                                <li class="ml-1"><a href="{{ url('/category/'.$category->slug) }}"><label class="badge badge-primary">{{$category->title}}</label></a></li>
+                                            @endforeach
+                                        @else
+                                            <li class="ml-1"><a href="#"><label class="badge badge-secondary">غير مصنف</label></a></li>
+                                        @endif
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </article>

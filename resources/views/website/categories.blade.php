@@ -18,10 +18,10 @@
                         <div class="col-sm-6 col-md-4 mb-4">
                             <div class="post-card text-right">
                                 <div class="post-image">
-                                    <img src="{{url('assets/img/default.jpg')}}" class="img-responsive" alt="post image">
+                                    <img src="{{ image_path($post->image) }}" class="img-responsive" alt="post image">
                                 </div>
                                 <div class="post-content">
-                                    <p class="post-summary mt-2">{{ $post->summary }}</p>
+                                    <p class="post-summary mt-2">{{ \Illuminate\Support\Str::limit($post->summary, 100, ' ... ') }}</p>
                                     <div class="post-publish-date mb-2">
                                         <span class="text-danger">
                                             <i class="fa fa-clock-o"></i>

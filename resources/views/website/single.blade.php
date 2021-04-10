@@ -12,9 +12,9 @@
 
                     @foreach ($post->categories as $category)
                         @if ($i%2==0)
-                            <li class="ml-1"><a href="#"><label class="badge badge-primary">{{$category->title}}</label></a></li>
+                            <li class="ml-1"><a href="{{ url('/category/'.$category->slug) }}"><label class="badge badge-primary">{{$category->title}}</label></a></li>
                         @else
-                            <li class="ml-1"><a href="#"><label class="badge badge-danger">{{$category->title}}</label></a></li>
+                            <li class="ml-1"><a href="{{ url('/category'.$category->slug) }}"><label class="badge badge-danger">{{$category->title}}</label></a></li>
                         @endif
 
                         @php
@@ -62,7 +62,7 @@
             </a>
         </div>
          {{-- posts carousel --}}
-         <div class="card-body posts-cards">
+         <div class="card-body posts-cards pt-1 pb-3 pb-md-4">
              <div class="owl-carousel owl-theme">
                  @foreach ($related_posts as $posts)
                     @foreach ($posts as $post)
@@ -72,7 +72,7 @@
                                 <img src="{{ image_path($post->image) }}" class="img-thumbnail" alt="post image">
                             </div>
                             <div class="post-content">
-                                <p class="post-summary mt-2">{{ $post->summary }}</p>
+                                <p class="post-summary mt-2 pl-3">{{ $post->summary }}</p>
                                 <div class="post-publish-date mb-2">
                                     <span class="text-danger">
                                         <i class="fa fa-clock-o"></i>
@@ -100,7 +100,7 @@
 
         $('.owl-carousel').owlCarousel({
             loop:true,
-            margin:15,
+            margin:5,
             nav:false,
             center:true,
             rtl: true,
@@ -134,9 +134,14 @@
 
     <style>
         .post-image{
-            width:200px;
+            width:100%;
             margin: 15px 0;
         }
+
+        .owl-carousel .post-image{
+            width:150px !important
+        }
+
 
         .post-image img{
             max-width: 100%

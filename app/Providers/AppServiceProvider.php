@@ -2,11 +2,10 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\ServiceProvider;
-use Illuminate\Support\Facades\Schema;
 use App\Category;
 use App\Post;
-use App\Contact;
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -27,16 +26,24 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        
         // messages
-        update_messages();
+        if (\Schema::hasTable('Contact')) {
+            update_messages();
+        }
 
         // categories
-        $categories = Category::whereHas('posts')->get();
-
+        if (\Schema::hasTable('Categories')) {
+            $categories = Category::whereHas('posts')->get();
+            view()->share(['categories' => $categories]);
+        }
+        
         // last six posts
-        $latest_six_posts = Post::limit(5)->where('published',"=",1)->orderBy('id',"desc")->get();
+        if (\Schema::hasTable('Posts')) {
+            $latest_six_posts = Post::limit(5)->where('published', "=", 1)->orderBy('id', "desc")->get();
+            view()->share(['latest_six_posts' => $latest_six_posts]);
+        }
 
-        view()->share(['categories'=>$categories,'latest_six_posts'=>$latest_six_posts]);
         Schema::defaultStringLength(191);
     }
 }
