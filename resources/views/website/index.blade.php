@@ -3,9 +3,9 @@
 @section('content')
     {{-- posts section --}}
     <section class="posts-content">
-        @foreach ($latest_cat_posts as $category)
-            {{-- category has postes published --}}
-            @if (count($category->posts()->where('published','=',1)->get())>0)
+        @if (count($latest_cat_posts)>0)
+            @foreach ($latest_cat_posts as $category)
+                {{-- category has postes published --}}
                 {{-- card section --}}
                 <div class="card bg-light mb-4">
                     {{-- posts heading --}}
@@ -15,7 +15,7 @@
                     <div class="card-body posts-cards">
                         <div class="owl-carousel owl-theme">
 
-                            @foreach ($category->posts as $post)
+                            @foreach ($category->posts()->get() as $post)
                             {{-- post card --}}
                             <div class="post-card text-right">
                                 <div class="post-image h-75">
@@ -39,17 +39,14 @@
                         </div>
                     </div>
                 </div>
-            @else
-                <div class="col">
-                    <P class="alert alert-danger d-block text-center py-2 mt-5" style="font-size: 18px">
-                        لا يوجد أي مقالات 
-                    </P>
-                </div>
-                @php
-                    break;
-                @endphp
-            @endif
-        @endforeach
+            @endforeach
+        @else
+            <div class="col">
+                <P class="alert alert-danger d-block text-center py-2 mt-5" style="font-size: 18px">
+                    لا يوجد أي مقالات 
+                </P>
+            </div>
+        @endif
     </section>
 @endsection
 

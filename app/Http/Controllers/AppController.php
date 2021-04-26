@@ -12,7 +12,7 @@ class AppController extends Controller
     public function index()
     {
         $title = "الرئيسية";
-        $latest_cat_posts = Category::whereHas('posts')->get();
+        $latest_cat_posts = Category::whereHas('posts')->limit(15)->get();
 
         return view('/website/index', compact('title', 'latest_cat_posts'));
     }
@@ -24,7 +24,7 @@ class AppController extends Controller
 
         $category_posts = $category->posts()->where('published', "=", 1)->paginate(9);
 
-        return view('/website/categories', ['catTitle' => $cat_title, 'category_posts' => $category_posts]);
+        return view('/website/categories', ['title' => $cat_title,'catTitle'=>$cat_title, 'category_posts' => $category_posts]);
     }
 
     public function singlePost($slug)

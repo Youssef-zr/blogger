@@ -3,7 +3,7 @@
 @section('content')
     <div class="contact text-right">
         <div class="header mb-3">
-            <h3 class="bg-primary text-white py-2 pr-3" style="font-size: 18px"><i class="fa fa-share" aria-hidden="true"></i> اتصل بنا</h3>
+            <h3 class="bg-success text-white py-2 pr-3" style="font-size: 18px"><i class="fa fa-share" aria-hidden="true"></i> اتصل بنا</h3>
         </div>
 
         <form action="{{url('contact')}}" method="post">
@@ -11,7 +11,11 @@
             @method('post')
 
             <div class="mt-4 form-group {{$errors->has('name') ? 'has-error' : ''}}">
-                {!! Form::label('name', ": الاسم", ['class'=>"form-label badge bg-primary text-white"]) !!}
+                <div class="d-flex align-items-center">
+                    {!! Form::label('name', "الاسم", ['class'=>"form-label badge bg-success text-white"]) !!}
+                    <i class="text-danger fa fa-2x mr-1">*</i>
+                </div>
+
                 {!! Form::text('name', old('name'), ['class'=>'form-control','placeholder'=>'أدخل اسمك الشخصي']) !!}
 
                 @if ($errors->has('name'))
@@ -22,7 +26,11 @@
             </div>
 
             <div class="mt-4 form-group {{$errors->has('email') ? 'has-error' : ''}}">
-                {!! Form::label('email', ": البريد الالكتروني", ['class'=>"form-label badge bg-primary text-white"]) !!}
+                <div class="d-flex align-items-center">
+                    {!! Form::label('email', "البريد الالكتروني", ['class'=>"form-label badge bg-success text-white"]) !!}
+                    <i class="text-danger fa fa-2x mr-1">*</i>
+                </div>
+
                 {!! Form::email('email', old('email'), ['class'=>'form-control','placeholder'=>'أدخل بريدك الالكتروني']) !!}
                 
                 @if ($errors->has('email'))
@@ -33,7 +41,10 @@
             </div>
 
             <div class="mt-4 form-group {{$errors->has('subject') ? 'has-error' : ''}}">
-                {!! Form::label('subject', ": الموضوع", ['class'=>"form-label badge bg-primary text-white"]) !!}
+                <div class="d-flex align-items-center">
+                    {!! Form::label('subject', "الموضوع", ['class'=>"form-label badge bg-success text-white"]) !!}
+                    <i class="text-danger fa fa-2x mr-1">*</i>
+                </div>
                 {!! Form::text('subject', old('subject'), ['class'=>'form-control','placeholder'=>'موضوع الرسالة']) !!}
 
                 @if ($errors->has('subject'))
@@ -44,8 +55,12 @@
             </div>
 
             <div class="mt-4 form-group {{$errors->has('msg') ? 'has-error' : ''}}">
-                {!! Form::label('msg', " : الرسالة", ['class'=>"form-label badge bg-primary text-white"]) !!}
-                {!! Form::textarea('msg', old('msg'), ['class'=>'form-control','placeholder'=>'الرسالة']) !!}
+                <div class="d-flex align-items-center">
+                    {!! Form::label('msg', "الرسالة", ['class'=>"form-label badge bg-success text-white"]) !!}
+                    <i class="text-danger fa fa-2x mr-1">*</i>
+                </div>
+
+                {!! Form::textarea('msg', old('msg'), ['class'=>'form-control','placeholder'=>'أدخل محتوى الرسالة']) !!}
                 
                 @if ($errors->has('msg'))
                 <span class="help-block">
@@ -54,7 +69,7 @@
                 @endif
             </div>
             <div class="form-group mt-3">
-                <button class="btn btn-primary btn-block"><i class="fa fa-send"></i> أرســـــــل</button>
+                <button class="btn btn-success btn-block"><i class="fa fa-send"></i> أرســـــــل</button>
             </div>
         </form>
     </div>
@@ -64,9 +79,9 @@
 
     <style>
         form{
-            border:1px solid #2196f3;
+            border:1px solid #4caf50;
             border-left-width: 5px;
-            border-left-color: #2196f3;
+            border-left-color: #4caf50;
             padding:10px 15px 5px;
             border-radius: 0 5px 5px 0;
         }
