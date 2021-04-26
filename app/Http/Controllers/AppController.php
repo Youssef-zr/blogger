@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use App\Category;
 use App\Post;
 use App\Contact;
@@ -33,12 +34,14 @@ class AppController extends Controller
         $post_cats = $post->categories()->get();
 
         $related_posts = [];
+        $seo_description = $post->meta_title;
+        $title = Str::limit($post->title, 2,'');
 
         foreach ($post_cats as $category) {
             array_push($related_posts, $category->posts()->where('published', "=", 1)->distinct()->limit(8)->get());
         }
 
-        return view("/website/single", compact('post', 'related_posts'));
+        return view("/website/single", compact('post', 'related_posts','seo_description','title'));
     }
 
 }
