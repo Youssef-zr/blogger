@@ -41,7 +41,7 @@ class CategoryController extends Controller
         $rurles = [
             'title' => 'required|string|max:255|unique:categories,title',
             'slug' => 'required|string|unique:categories,slug',
-            'meta_tag' => 'nullable|max:128|min:5',
+            'meta_tag' => 'nullable|max:128|min:3',
         ];
 
         $niceNames=[
@@ -95,7 +95,7 @@ class CategoryController extends Controller
         $rurles = [
             'title' => 'required|string|max:255|unique:categories,title,'.$category->id,
             'slug' => 'required|string|unique:categories,slug,'.$category->id,
-            'meta_tag' => 'nullable|max:128|min:10',
+            'meta_tag' => 'nullable|max:128|min:3',
         ];
 
         $niceNames=[

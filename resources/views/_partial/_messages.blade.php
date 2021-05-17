@@ -2,7 +2,7 @@
     @if (session()->has('msgSuccess'))
         <script>
             new Noty({
-                "theme": 'relax',
+                "theme": 'metroui',
                 "type":"success",
                 "layout":'topRight',
                 "text":"{{session('msgSuccess')}}",
