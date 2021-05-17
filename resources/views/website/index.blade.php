@@ -64,42 +64,33 @@
                 centerMode: true,
                 centerPadding: '40px',
                 slidesToShow: 4,
+                slidesToScroll: 2,
                 autoplay: true,
                 autoplaySpeed: 2000,
                 focusOnSelect:true,
                 rtl:true,
                 responsive: [
-                {
-                    breakpoint: 480,
-                    settings: {
-                        arrows: true,
-                        centerMode: true,
-                        centerPadding: '20px',
-                        slidesToShow: 2
-                    }
-                },
-                {
-                    breakpoint: 768,
-                    settings: {
-                        slidesToShow: 3
-                    }
-                },
-                {
-                    breakpoint: 968,
-                    settings: {
-                        slidesToShow: 4
-                    }
-                },
-                {
-                    breakpoint: 2000,
-                    settings: {
-                        arrows: true,
-                        centerMode: true,
-                        centerPadding: '20px',
-                        slidesToShow: 5
-                    }
-                },
-            ]
+                    {
+                        breakpoint: 480,
+                        settings: {
+                            arrows: true,
+                            centerPadding: '20px',
+                            slidesToShow: 2
+                        }
+                    },
+                    {
+                        breakpoint: 768,
+                        settings: {
+                            slidesToShow: 3
+                        }
+                    },
+                    {
+                        breakpoint: 2000,
+                        settings: {
+                            slidesToShow: 4
+                        }
+                    },
+                ]
                 
             });
         })

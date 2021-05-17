@@ -17,13 +17,13 @@ a:hover {
     height: auto;
 }
 
-.slick-list{
+.slick-list {
     pointer-events: all !important;
 }
 
-.slick-slide{
-    margin-left:  10px;
-    margin-right:  10px;
+.slick-slide {
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 .slick-list {
@@ -73,6 +73,13 @@ header .head .top-space ul li {
     border-right: 1px solid #fff;
     padding: 0 5px;
 }
+header .head .top-space ul li a {
+    transition: color ease .5s;
+}
+
+header .head .top-space ul li a:hover {
+    color: #f66e00 !important;
+}
 
 .icon {
     background: #fff;
@@ -83,12 +90,12 @@ header .head .top-space ul li {
     font-size: 28px !important;
 }
 
-.icon i{
+.icon i {
     font-size: inherit;
 }
 
-.icon:hover{
-    color:#222 !important
+.icon:hover {
+    color: #222 !important;
 }
 
 .icon.youtube {

@@ -220,6 +220,8 @@
 <!-- AdminLTE for demo purposes -->
 {!! Html::script('adminlte/dist/js/demo.js') !!}
 
+{{-- select 2 script --}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
 
 <script>
     $(function(){
@@ -235,6 +237,14 @@
             }
             $reader.readAsDataURL(this.files[0]);
         });
+
+        // init select2 plugin
+        setTimeout(() => {
+          $('[name="example_length"]').select2();
+          $('.select2-container').animate({
+            margin:"0 8px"
+          },500)
+        }, 100);
     })
 </script>
 

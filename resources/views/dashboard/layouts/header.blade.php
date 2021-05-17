@@ -23,15 +23,19 @@
   {!! Html::style('adminlte/RTL/profile.css') !!}
   {!! Html::style('adminlte/RTL/rtl.css') !!}
   {!! Html::style('adminlte/RTL/fonts/fonts-fa.css') !!}
+
   {{-- AdminLTE Skins. Choose a skin from the css/skins --}}
     {!! Html::style('adminlte/dist/css/skins/_all-skins.min.css') !!}
   {{-- folder instead of downloading all of theme to reduce the load --}}
 
   {{-- noty plugin --}}
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.css"/>
+
   {{--  noty plugin script  --}}
   <script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js"></script> 
 
+  {{-- select 2 styleSheet --}}
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css"/>
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesnt work if you view the page via file:// -->
@@ -39,6 +43,21 @@
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
+
+  <style>
+      .select2-container .select2-selection--single .select2-selection__rendered
+      {
+          padding-left: 0 !important
+      }
+      .select2-results {
+        text-align: right;
+      }
+      .select2-container--default[dir="rtl"] .select2-selection--single .select2-selection__clear {
+        margin-left: 8px;
+        color: #ec1f1f;
+        font-size:19px
+      }
+  </style>
 
 @stack('css')
 

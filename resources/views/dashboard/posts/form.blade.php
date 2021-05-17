@@ -116,9 +116,9 @@
     <div class="col-md-4">
         <div class='text-right'>
             @if (isset($post))
-                <img src="{{ image_path($post->image) }}" alt="site icon" srcset="" class="img-thumbnail image-preview"
+                <img src="{{ image_path($post->image) }}" alt="post icon" srcset="" class="img-thumbnail image-preview">
             @else
-                <img src="{{ \Storage::url('website/posts/default.png') }}" alt="site icon" srcset="" class="img-thumbnail image-preview"
+                <img src="{{ \Storage::url('website/posts/default.png') }}" alt="post icon" srcset="" class="img-thumbnail image-preview"
             @endif
             style="width:105px;height:105px;margin-top:16px"
             >
@@ -137,10 +137,8 @@
 
 @push('css')
 
-    {{-- select 2 styleSheet --}}
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css"/>
-
     <style>
+
         .btn{
             position:relative;
             font-size: 16px
@@ -150,14 +148,22 @@
          margin-right: 10px
         }
 
-        .select2-container--default .select2-selection--multiple .select2-selection__choice {
+        .select2-container--default
+            .select2-selection--multiple
+            .select2-selection__choice {
             background-color: #00c0ef !important;
             border: 1px solid #00c0ef !important;
         }
-        .select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
+
+        .select2-container--default
+            .select2-selection--multiple
+            .select2-selection__choice__remove {
             color: #fff !important;
         }
-        .select2-container--default .select2-selection--multiple .select2-selection__clear {
+
+        .select2-container--default
+            .select2-selection--multiple
+            .select2-selection__clear {
             margin-left: 10px;
             color: red;
         }
@@ -173,8 +179,6 @@
 
 @push('js')
 
-    {{-- select 2 script --}}
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
     <!-- CkEditor - text editor -->
     {!! Html::script('adminlte/bower_components/ckeditor/ckeditor.js') !!}
     
