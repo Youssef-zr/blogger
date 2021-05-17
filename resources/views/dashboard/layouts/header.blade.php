@@ -57,6 +57,12 @@
         color: #ec1f1f;
         font-size:19px
       }
+      
+      .select2{
+        display:block;
+        width: auto !important;
+      }
+
   </style>
 
 @stack('css')

@@ -116,7 +116,7 @@
     <div class="col-md-4">
         <div class='text-right'>
             @if (isset($post))
-                <img src="{{ image_path($post->image) }}" alt="post icon" srcset="" class="img-thumbnail image-preview">
+                <img src="{{ image_path($post->image) }}" alt="post icon" srcset="" class="img-thumbnail image-preview"
             @else
                 <img src="{{ \Storage::url('website/posts/default.png') }}" alt="post icon" srcset="" class="img-thumbnail image-preview"
             @endif
