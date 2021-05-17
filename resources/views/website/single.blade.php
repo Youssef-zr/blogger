@@ -12,9 +12,9 @@
 
                     @foreach ($post->categories as $category)
                         @if ($i%2==0)
-                            <li class="ml-1"><a href="{{ url('/category/'.$category->slug) }}"><label class="badge badge-primary">{{$category->title}}</label></a></li>
+                            <li class="ml-1"><a href="{{ url('/category/'.$category->slug) }}"><label class="badge badge-success">{{$category->title}}</label></a></li>
                         @else
-                            <li class="ml-1"><a href="{{ url('/category'.$category->slug) }}"><label class="badge badge-danger">{{$category->title}}</label></a></li>
+                            <li class="ml-1"><a href="{{ url('/category/'.$category->slug) }}"><label class="badge badge-info">{{$category->title}}</label></a></li>
                         @endif
 
                         @php
@@ -25,8 +25,8 @@
                 </ul>
             </div>
             <div class="post-date mb-3">
-                <span class="text-underline" style="font-size:16px">
-                    <i class="fa fa-clock-o ml-2" style="font-size:18px"></i>
+                <span style="font-size:14px">
+                    <i class="fa fa-clock-o ml-2 text-primary" style="font-size:19px"></i>
                     {{ $post->created_at }}
                 </span>
             </div>
@@ -52,7 +52,7 @@
 
 @section('recent-posts')
    {{-- Recent Posts --}}
-   <section class="recent-post card">
+   <section class="recent-post card mt-5">
         <div class="card-header text-right p-2">
             <a href="#">
                 <h4 class="bg-primary text-white p-2 d-inline-block my-0"> 
@@ -63,7 +63,7 @@
         </div>
          {{-- posts carousel --}}
          <div class="card-body posts-cards pt-1 pb-3 pb-md-4">
-             <div class="owl-carousel owl-theme">
+            <div class="slick-slider">
                  @foreach ($related_posts as $posts)
                     @foreach ($posts as $post)
                         {{-- post card --}}
@@ -92,45 +92,63 @@
 @endsection
 
 @section('js')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
 <script>
 
     $(()=>{
-
-        $('.owl-carousel').owlCarousel({
-            loop:true,
-            margin:5,
-            nav:false,
-            center:true,
-            rtl: true,
-            lazyLoad: true,
-            autoplay:true,
-            autoplayTimeout:3000,
-            autoplayHoverPause:true,
-            responsive:{
-                0: {
-                    items: 1,
+        $('.slick-slider').slick({
+            adaptiveHeight:true,
+            lazyLoad: 'ondemand',
+            infinite: true,
+            speed: 500,
+            cssEase: 'linear',
+            centerMode: true,
+            centerPadding: '40px',
+            slidesToScroll: 1,
+            autoplay: true,
+            autoplaySpeed: 2000,
+            focusOnSelect:true,
+            rtl:true,
+            responsive: [
+                {
+                    breakpoint: 480,
+                    settings: {
+                        arrows: true,
+                        centerMode: true,
+                        centerPadding: '20px',
+                        slidesToShow: 2
+                    }
                 },
-                452: {
-                    items: 2,
+                {
+                    breakpoint: 768,
+                    settings: {
+                        slidesToShow: 3
+                    }
                 },
-                550: {
-                    items: 3,
+                {
+                    breakpoint: 968,
+                    settings: {
+                        slidesToShow: 4
+                    }
                 },
-                992: {
-                    items: 5,
+             
+                {
+                    breakpoint: 2000,
+                    settings: {
+                        slidesToShow: 5
+                    }
                 },
-            }
+            ]
+            
         });
-
     })
 </script>
 @endsection
 
 @section('css')
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"/>
 
     <style>
         .post-image{

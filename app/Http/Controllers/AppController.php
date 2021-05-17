@@ -35,7 +35,7 @@ class AppController extends Controller
 
         $related_posts = [];
         $seo_description = $post->meta_title;
-        $title = Str::limit($post->title, 2,'');
+        $title = Str::limit($post->title, 20,'');
 
         foreach ($post_cats as $category) {
             array_push($related_posts, $category->posts()->where('published', "=", 1)->distinct()->limit(8)->get());

@@ -13,7 +13,7 @@
 
                     {{-- posts carousel --}}
                     <div class="card-body posts-cards">
-                        <div class="slick-slider">
+                        <div class="owl-carousel owl-theme">
 
                             @foreach ($category->posts()->get() as $post)
                             {{-- post card --}}
@@ -51,72 +51,50 @@
 @endsection
 
 @section('js')
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
-    <script>
 
-        $(()=>{
-            $('.slick-slider').slick({
-                adaptiveHeight:true,
-                lazyLoad: 'ondemand',
-                infinite: true,
-                speed: 500,
-                cssEase: 'linear',
-                centerMode: true,
-                centerPadding: '40px',
-                slidesToShow: 4,
-                autoplay: true,
-                autoplaySpeed: 2000,
-                focusOnSelect:true,
-                rtl:true,
-                responsive: [
-                {
-                    breakpoint: 480,
-                    settings: {
-                        arrows: true,
-                        centerMode: true,
-                        centerPadding: '20px',
-                        slidesToShow: 2
-                    }
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+<script>
+
+    $(()=>{
+
+        $('.owl-carousel').owlCarousel({
+            loop:true,
+            margin:15,
+            nav:false,
+            center:true,
+            rtl: true,
+            lazyLoad: true,
+            animateOut: 'slideOutDown',
+            animateIn: 'flipInX',
+            autoplay:true,
+            autoplayTimeout:3000,
+            autoplayHoverPause:true,
+            responsive:{
+                0: {
+                    items: 1
                 },
-                {
-                    breakpoint: 768,
-                    settings: {
-                        slidesToShow: 3
-                    }
+                452: {
+                    items: 2
                 },
-                {
-                    breakpoint: 968,
-                    settings: {
-                        slidesToShow: 4
-                    }
+                550: {
+                    items: 3
                 },
-                {
-                    breakpoint: 2000,
-                    settings: {
-                        arrows: true,
-                        centerMode: true,
-                        centerPadding: '20px',
-                        slidesToShow: 5
-                    }
+                992: {
+                    items: 4,
                 },
-            ]
-                
-            });
-        })
-    </script>
+            }
+        });
+
+    })
+</script>
 @endsection
 
 @section('css')
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"/>
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"/>
+    
     {{-- noty plugin --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.css"/>
     {{--  noty plugin script  --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js"></script> 
-    <style>
-        .noty_type__success{
-            text-align: right !important
-        }
-    </style>
 @endsection

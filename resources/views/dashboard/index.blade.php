@@ -45,7 +45,7 @@
                           <div class="icon">
                             <i class="fa fa-envelope"></i>
                           </div>
-                          <a href="{{ adminUrl('contact') }}" class="small-box-footer">قائمة المواضيع <i class="fa fa-arrow-circle-left"></i></a>
+                          <a href="{{ adminUrl('contact') }}" class="small-box-footer">قائمة الرسائل <i class="fa fa-arrow-circle-left"></i></a>
                         </div>
                     </div>
                
