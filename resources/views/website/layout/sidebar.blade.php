@@ -26,7 +26,7 @@
                                     <ul class="list-unstyled d-flex justify-content-start pl-0 ml-auto">
                                         @if (count($item->categories->toArray())>0)
                                             @foreach ($item->categories as $category)
-                                                <li class="ml-1"><a href="{{ url('/category/'.$category->slug) }}"><label class="badge badge-primary">{{$category->title}}</label></a></li>
+                                                <li class="ml-1"><a href="{{ url('/category/'.$category->slug) }}"><label class="badge badge-success">{{$category->title}}</label></a></li>
                                             @endforeach
                                         @else
                                             <li class="ml-1"><a href="#"><label class="badge badge-secondary">غير مصنف</label></a></li>
